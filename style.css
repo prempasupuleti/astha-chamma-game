@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 62.5%;
+}
+
+.content {
+
+  background-color: rgb(134, 187, 231);
+  height: 100vh;
+}
+.content_board {
+  padding: 1rem;
+  margin-left: 10rem;
+}
+
+.content_board_gridContainer-upper,
+.content_board_gridContainer-lower {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  width: 70%;
+  grid-auto-rows: minmax(
+    115px,
+    0
+  );
+  margin-top: 0rem;
+}
+
+.content_board_gridContainer--item {
+  width: 100%;
+  border: 1px solid black;
+  position: relative;
+}
+
+.content_board_gridContainer-upper {
+  animation: movefromRight 2s ease-out;
+}
+.content_board_gridContainer-lower {
+  animation: movefromLeft 2s ease-out;
+}
+
+@keyframes movefromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-30rem);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes movefromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(30rem);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+
+.content_board_gridContainer--item > div {
+  position: absolute;
+  font-size: 2rem;
+}
+.one {
+  top: 0.2rem;
+  left: 3.8rem;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+
+}
+
+.two {
+  top: 1.8rem;
+  left: 1rem;
+  width: 20px;
+  height: 20px;
+
+}
+
+.three {
+  bottom: 1.5rem;
+  left: 4rem;
+  width: 20px;
+  height: 20px;
+
+}
+.four {
+  right: 1rem;
+  top: 1.8rem;
+  width: 20px;
+  height: 20px;
+
+}
+.player1 {
+  background-color: orangered;
+  cursor: pointer;
+  transition: all 0.3s;
+  transform: perspective(100px) rotate(-25deg) skew(25deg) translate(0, 0);
+  box-shadow: -20px 20px 10px rgb(0, 0, 0, 0.5);
+  margin: 10px;
+}
+.player2 {
+  background-color: #ffa5a5;
+  cursor: pointer;
+  transition: all 0.3s;
+  transform: perspective(100px) rotate(-25deg) skew(25deg) translate(0, 0);
+  box-shadow: -20px 20px 10px rgb(0, 0, 0, 0.5);
+}
+.player3 {
+  background-color: #a3d8f4;
+  cursor: pointer;
+  transition: all 0.3s;
+  transform: perspective(100px) rotate(-25deg) skew(25deg) translate(0, 0);
+  box-shadow: -20px 20px 10px rgb(0, 0, 0, 0.5);
+
+}
+.player4 {
+  background-color: #28df99;
+  cursor: pointer;
+  transition: all 0.3s;
+  transform: perspective(100px) rotate(-25deg) skew(25deg) translate(0, 0);
+  box-shadow: -20px 20px 10px rgb(0, 0, 0, 0.5);
+}
+
+.one::before,
+.two::before,
+.three::before,
+.four::before {
+  content: "";
+  position: absolute;
+  top: 09px;
+  left: -15px;
+  height: 15px;
+  width: 15px;
+  background: grey;
+  transition: 0.5s;
+  transform: rotate(0deg) skewY(-45deg);
+  overflow: hidden;
+}
+.one::after,
+.two::after,
+.three::after,
+.four::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: -9px;
+  height: 15px;
+  width: 100%;
+  background: grey;
+  transition: 0.5s;
+  transform: rotate(0deg) skewX(-45deg);
+}
+.one:hover,
+.two:hover,
+.three:hover,
+.four:hover {
+  transform: perspective(1000px) rotate(-30deg) skew(25deg)
+    translate(10px, -10px);
+  box-shadow: -50px 50px 50px rgb(0, 0, 0, 0.5);
+}
+
+.one:active,
+.two:active,
+.three:active,
+.four:active {
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0px, -0px);
+  box-shadow: -50px 50px 50px rgb(0, 0, 0, 0.5);
+}
+.content_board_gridContainer--item-cross {
+  border-right: 1px solid black;
+  height: 12rem;
+  transform: translate(-45px, -98px) rotate(54deg);
+}
+
+.dice {
+  position: absolute;
+  height: 5rem;
+  top: 4rem;
+  right: 5rem;
+
+}
+.dice img {
+  width: 8rem;
+  height: 8rem;
+}
+.dice_container .scene {
+  position: absolute;
+  right: 2rem;
+}
+
+.dice_container-text {
+  font-size: 1rem;
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  margin-right: 5rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.dice_container-text:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.15);
+  background-color: #ccf6c8;
+}
+
+.dice_container-text:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.15);
+}
+
+.scene {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  margin: 60px 50px;
+  perspective: 400px;
+}
+
+.cube {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  transition: transform 0.5s ease-out;
+}
+
+.cube.show-5 {
+  transform: translateZ(-50px) rotateY(0deg);
+}
+.cube.show-2 {
+  transform: translateZ(-50px) rotateY(-90deg);
+}
+.cube.show-4 {
+  transform: translateZ(-50px) rotateY(-180deg);
+}
+.cube.show-3 {
+  transform: translateZ(-50px) rotateY(90deg);
+}
+.cube.show-1 {
+  transform: translateZ(-50px) rotateX(-90deg);
+}
+.cube.show-6 {
+  transform: translateZ(-50px) rotateX(90deg);
+}
+
+.cube__face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  line-height: 100px;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+
+}
+
+.cube__face--front {
+  background: hsla(0, 100%, 50%, 0.7);
+}
+.cube__face--right {
+  background: hsla(60, 100%, 50%, 0.7);
+}
+.cube__face--back {
+  background: hsla(120, 100%, 50%, 0.7);
+}
+.cube__face--left {
+  background: hsla(180, 100%, 50%, 0.7);
+}
+.cube__face--top {
+  background: hsla(240, 100%, 50%, 0.7);
+}
+.cube__face--bottom {
+  background: hsla(300, 100%, 50%, 0.7);
+}
+
+.cube__face--front {
+  transform: rotateY(0deg) translateZ(50px);
+}
+.cube__face--right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.cube__face--back {
+  transform: rotateY(180deg) translateZ(50px);
+}
+.cube__face--left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.cube__face--top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.cube__face--bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+label {
+  margin-right: 10px;
+}
+
+.info-text {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  margin: 200px 30px;
+  font-size: 2rem;
+  width: 200px;
+  white-space: initial;
+  word-wrap: break-word;
+  background-color: #ffa5a5;
+  padding: 10px;
+}
